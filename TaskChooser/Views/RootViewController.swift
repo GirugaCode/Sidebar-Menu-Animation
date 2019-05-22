@@ -54,6 +54,8 @@ class RootViewController: UIViewController {
     if let detailViewController = detailViewController {
       setupBurger(in: detailViewController)
     }
+    
+    hamburgerView?.setFractionOpen(1.0)
 
   }
   
@@ -102,6 +104,8 @@ extension RootViewController: UIScrollViewDelegate {
     scrollView.isPagingEnabled = offset.x < threshold
     let fraction = calculateMenuDisplayFraction(scrollView)
     updateViewVisibility(menuContainer, fraction: fraction)
+    
+    hamburgerView?.setFractionOpen(1.0 - fraction)
   }
   // Detects a raised touch on scroll view
   func scrollViewDidEndDragging(_ scrollView: UIScrollView,

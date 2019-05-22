@@ -20,5 +20,11 @@ class HamburgerView: UIView {
   private func configure() {
     addSubview(imageView)
   }
+  
+  // Rotates the view when menu is fully opened
+  func setFractionOpen(_ fraction: CGFloat) {
+    let angle = fraction * .pi/2.0
+    imageView.transform = CGAffineTransform(rotationAngle: angle)
+  }
 
 }
