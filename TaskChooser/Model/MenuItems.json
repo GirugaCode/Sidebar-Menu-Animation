@@ -1,0 +1,35 @@
+[ {
+  "imageName":"Smile",
+  "bigImageName":"SmileBig",
+  "colorArray":[249,84,7]
+},
+{
+  "imageName":"Coffee",
+  "bigImageName":"CoffeeBig",
+  "colorArray":[69,59,55]
+},
+{
+  "imageName":"Drinks",
+  "bigImageName":"DrinksBig",
+  "colorArray":[249,194,7]
+},
+{
+  "imageName":"ThumbsUp",
+  "bigImageName":"ThumbsUpBig",
+  "colorArray":[32,188,32]
+},
+{
+  "imageName":"ThumbsDown",
+  "bigImageName":"ThumbsDownBig",
+  "colorArray":[207,34,156]
+},
+{
+  "imageName":"Raining",
+  "bigImageName":"RainingBig",
+  "colorArray":[14,88,149]
+},
+{
+  "imageName":"Clock",
+  "bigImageName":"ClockBig",
+  "colorArray":[15,193,231]
+}]
