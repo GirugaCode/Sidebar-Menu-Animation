@@ -24,6 +24,8 @@ class RootViewController: UIViewController {
   
   var menuViewController: MenuViewController?
   var detailViewController: DetailViewController?
+  
+  var hamburgerView: HamburgerView?
 
   lazy var scroller: UIScrollView = {
     let scroller = UIScrollView(frame: .zero)
@@ -47,6 +49,12 @@ class RootViewController: UIViewController {
     detailViewController = setupFromStoryboard("DetailViewController", into: detailContainer) as? DetailViewController
     
     menuViewController?.delegate = self
+    
+    // Sets up the Burger menu
+    if let detailViewController = detailViewController {
+      setupBurger(in: detailViewController)
+    }
+
   }
   
   func setupMenuContainer() {
@@ -152,6 +160,23 @@ extension RootViewController {
   }
   
 }
+
+extension RootViewController {
+  func setupBurger(in viewController: UIViewController) {
+    let action = #selector(burgerTapped(_:))
+    let tapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                      action: action)
+    let burger = HamburgerView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    burger.addGestureRecognizer(tapGestureRecognizer)
+    viewController.navigationItem.leftBarButtonItem
+      = UIBarButtonItem(customView: burger)
+    hamburgerView = burger
+  }
+  @objc func burgerTapped(_ sender: Any) {
+    toggleMenu()
+  }
+}
+
 
 extension RootViewController: MenuDelegate {
   /*
