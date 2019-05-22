@@ -17,6 +17,7 @@ extension UIView {
 class RootViewController: UIViewController {
   
   let menuWidth: CGFloat = 80.0
+  lazy var threshold = menuWidth/2.0 // Using lazy to calculate a value relative to menuWidth
   
   var menuContainer = UIView(frame: .zero)
   var detailContainer = UIView(frame: .zero)
@@ -86,6 +87,40 @@ class RootViewController: UIViewController {
 }
 
 extension RootViewController: UIScrollViewDelegate {
+  // Triggers when something has changed the contentOffset
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    let offset = scrollView.contentOffset
+    // isPagingEnable based on whether the horizontal offset is above the threshold value
+    scrollView.isPagingEnabled = offset.x < threshold
+  }
+  // Detects a raised touch on scroll view
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView,
+                                willDecelerate decelerate: Bool) {
+    let offset = scrollView.contentOffset
+    // As long asa the conten offset is > than the threshold, hide the menu. Otherwise reveal menu
+    if offset.x > threshold {
+      hideMenu()
+    }
+  }
+  // Helpers to animate the menu position
+  func moveMenu(nextPosition: CGFloat) {
+    let nextOffset = CGPoint(x: nextPosition, y: 0)
+    scroller.setContentOffset(nextOffset, animated: true)
+  }
+  func hideMenu() {
+    moveMenu(nextPosition: menuWidth)
+  }
+  func showMenu() {
+    moveMenu(nextPosition: 0)
+  }
+  func toggleMenu() {
+    let menuIsHidden = scroller.contentOffset.x > threshold
+    if menuIsHidden {
+      showMenu()
+    } else {
+      hideMenu()
+    }
+  }
 }
 
 extension RootViewController {
