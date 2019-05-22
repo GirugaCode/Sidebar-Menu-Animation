@@ -44,6 +44,8 @@ class RootViewController: UIViewController {
     
     menuViewController = setupFromStoryboard("MenuViewController", into: menuContainer) as? MenuViewController
     detailViewController = setupFromStoryboard("DetailViewController", into: detailContainer) as? DetailViewController
+    
+    menuViewController?.delegate = self
   }
   
   func setupMenuContainer() {
@@ -114,4 +116,15 @@ extension RootViewController {
     return viewController
   }
   
+}
+
+extension RootViewController: MenuDelegate {
+  /*
+   Declares that RootViewController adopts MenuDelegate.
+   When you select a menu item, RootViewController tells
+   DetailViewController about that change by passing the selected MenuItem to the instance.
+   */
+  func didSelectMenuItem(_ item: MenuItem) {
+    detailViewController?.menuItem = item
+  }
 }
