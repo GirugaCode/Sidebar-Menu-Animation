@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28D993B922952E9900EC4613 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D993B822952E9900EC4613 /* RootViewController.swift */; };
 		5394F02521864DF5006E754C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5394F02321864DF4006E754C /* LaunchScreen.storyboard */; };
 		AD5787AD2232A4EE004A87D0 /* UINavigationBar+StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5787AC2232A4EE004A87D0 /* UINavigationBar+StatusBar.swift */; };
 		AD919E92222540400032F2CC /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD919E8F222540400032F2CC /* MenuItem.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28D993B822952E9900EC4613 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		5394F02421864DF4006E754C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD5787AC2232A4EE004A87D0 /* UINavigationBar+StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+StatusBar.swift"; sourceTree = "<group>"; };
 		AD919E8F222540400032F2CC /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				AD919E9A2225406F0032F2CC /* Main.storyboard */,
+				28D993B822952E9900EC4613 /* RootViewController.swift */,
 				AD919E962225406F0032F2CC /* DetailViewController.swift */,
 				AD919E972225406F0032F2CC /* MenuViewController.swift */,
 				AD919E9B2225406F0032F2CC /* MenuItemCell.swift */,
@@ -194,6 +197,7 @@
 			files = (
 				AD919E93222540400032F2CC /* MenuDataSource.swift in Sources */,
 				AD919EA12225406F0032F2CC /* MenuItemCell.swift in Sources */,
+				28D993B922952E9900EC4613 /* RootViewController.swift in Sources */,
 				AD919E9D2225406F0032F2CC /* MenuViewController.swift in Sources */,
 				AD919EA42225409E0032F2CC /* UIColor+ArrayInstantiation.swift in Sources */,
 				D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */,
