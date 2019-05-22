@@ -20,6 +20,9 @@ class RootViewController: UIViewController {
   
   var menuContainer = UIView(frame: .zero)
   var detailContainer = UIView(frame: .zero)
+  
+  var menuViewController: MenuViewController?
+  var detailViewController: DetailViewController?
 
   lazy var scroller: UIScrollView = {
     let scroller = UIScrollView(frame: .zero)
@@ -38,6 +41,9 @@ class RootViewController: UIViewController {
     
     setupMenuContainer()
     setupDetailContainer()
+    
+    menuViewController = setupFromStoryboard("MenuViewController", into: menuContainer) as? MenuViewController
+    detailViewController = setupFromStoryboard("DetailViewController", into: detailContainer) as? DetailViewController
   }
   
   func setupMenuContainer() {
@@ -78,4 +84,34 @@ class RootViewController: UIViewController {
 }
 
 extension RootViewController: UIScrollViewDelegate {
+}
+
+extension RootViewController {
+  func setupNavigationController(_ rootController: UIViewController) -> UINavigationController {
+    let nav = UINavigationController(rootViewController: rootController)
+    
+    nav.navigationBar.barTintColor = UIColor(named: "rw-dark")
+    nav.navigationBar.tintColor = UIColor(named: "rw-light")
+    nav.navigationBar.isTranslucent = false
+    nav.navigationBar.clipsToBounds = true
+    
+    // Sets up the UINavigationController as a child view controller of RootViewController
+    // Can be setup properly on any aspect mode
+    addChild(nav)
+    
+    return nav
+  }
+  
+  func setupFromStoryboard (_ identifier: String, into container: UIView) -> UIViewController {
+    // Guard Error in case Storyboard breaks
+    guard let viewController = storyboard?
+      .instantiateViewController(withIdentifier: identifier) else {
+        fatalError("broken storyboard expected \(identifier) to be available")
+    }
+    let nav = setupNavigationController(viewController)
+    // Places the view controller inside a UINavigationController and embeds that navigation controller inside the container
+    container.embedInsideSafeArea(nav.view)
+    return viewController
+  }
+  
 }
